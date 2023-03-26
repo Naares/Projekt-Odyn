@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     
     public float characterSpeed = 10;
 
+    private float horizontal = 0;
+    private float vertical = 0;
+
     private Rigidbody2D playerRigidBody;
     // Start is called before the first frame update
     void Start()
@@ -24,26 +27,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+        Debug.Log("horizontal input: " + horizontal);
+        Debug.Log("Vertical input : " + vertical);
     }
 
     void FixedUpdate() {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        if(horizontal != 0){
-            if(horizontal > 0){
-                transform.Translate(Vector3.right * Time.deltaTime * characterSpeed);
-            }else if(horizontal < 0){
-                transform.Translate(Vector3.left * Time.deltaTime * characterSpeed);
-            }
-        }
-        if(vertical != 0){
-            if(vertical > 0){
-                transform.Translate(Vector3.up * Time.deltaTime * characterSpeed);
-            }else if(vertical < 0){
-                transform.Translate(Vector3.down * Time.deltaTime * characterSpeed);
-            }
-        }
+        playerRigidBody.velocity = new Vector2(horizontal * characterSpeed, vertical * characterSpeed);
     }
 
     private void LateUpdate() {
