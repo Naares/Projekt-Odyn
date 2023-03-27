@@ -791,6 +791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCamera: {fileID: 519420031}
   characterSpeed: 10
+  dashSpeed: 3
+  dashTime: 0.2
+  dashCooldownInSeconds: 2
 --- !u!61 &844822345
 BoxCollider2D:
   m_ObjectHideFlags: 0

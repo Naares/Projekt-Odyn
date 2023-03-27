@@ -10,18 +10,26 @@ public class PlayerController : MonoBehaviour
     private float cameraDistance = -10;
     
     public float characterSpeed = 10;
+    public float dashSpeed = 3;
+    public float dashTime = 0.5f;
 
     private float horizontal = 0;
     private float vertical = 0;
+
+    public float dashCooldownInSeconds = 5f;
+
+    private float _dashCooldownCounter;
+    private float _dashAnimationTimeCounter;
+    bool playerDashing = false;
 
     private Rigidbody2D playerRigidBody;
     // Start is called before the first frame update
     void Start()
     {
-        //setup the default camera distance as the object in the scene, if no object exists it will error anyways
         cameraDistance = currentCamera.transform.position.z;
         playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
-
+        _dashCooldownCounter = Time.time;
+        _dashAnimationTimeCounter = Time.time;
     }
 
     // Update is called once per frame
@@ -29,16 +37,42 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        Debug.Log("horizontal input: " + horizontal);
-        Debug.Log("Vertical input : " + vertical);
     }
 
     void FixedUpdate() {
-        playerRigidBody.velocity = new Vector2(horizontal * characterSpeed, vertical * characterSpeed);
+        // TODO : check the timing on this animation
+        if(playerDashing){
+            if(Time.time > _dashAnimationTimeCounter){
+                playerDashing = false;
+                playerRigidBody.velocity = Vector2.zero;
+            }
+            else{
+                return;
+            }
+        }
+        if(Input.GetAxisRaw("Dash") != 0 && Time.time > _dashCooldownCounter && (vertical != 0 || horizontal !=0)){
+                _dashCooldownCounter = Time.time + dashCooldownInSeconds;
+                Dash();
+                playerDashing = true;
+                _dashAnimationTimeCounter = Time.time + dashTime;
+        }else{
+            playerRigidBody.velocity = new Vector2(horizontal * characterSpeed, vertical * characterSpeed);
+        }
     }
 
     private void LateUpdate() {
         //Always have the camera focused on player
         currentCamera.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,cameraDistance);
+    }
+
+    //Dashes the player to where he is currently facing (player will have to move to dash)
+    private void Dash(){
+        Debug.Log("Player is dashing...");
+        if(vertical != 0){
+            playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x,vertical * characterSpeed * dashSpeed);
+        }
+        if(horizontal != 0){
+            playerRigidBody.velocity = new Vector2(horizontal * characterSpeed * dashSpeed, playerRigidBody.velocity.y);
+        }
     }
 }
