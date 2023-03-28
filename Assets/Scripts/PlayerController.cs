@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public Camera currentCamera;
     //Default value for camera distance is 10m
     private float cameraDistance = -10;
