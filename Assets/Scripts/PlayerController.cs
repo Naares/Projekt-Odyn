@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dashes the player to where he is currently facing (player will have to move to dash)
+    //TODO: in UI add cooldow for dash (different talents will have diferrent props for dash so probably move it into spell manager)
     private void Dash(){
         Debug.Log("Player is dashing...");
         if(vertical != 0){

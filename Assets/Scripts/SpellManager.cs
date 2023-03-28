@@ -20,7 +20,7 @@ public class SpellManager : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonUp("CastSpell1")){
-            Instantiate(Resources.Load("Spells/" + spellName1));
+            Instantiate(Resources.Load("Spells/" + spellName1), gameObject.transform);
         }
     }
 
