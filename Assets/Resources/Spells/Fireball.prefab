@@ -98,10 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b51781b1bc86b429e2930c9cc5b755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSpeed: 1
-  detonationTime: 10
+  spellSpeed: 10
+  detonationTime: 0.8
   detonationRadius: 5
-  direction: {x: 0, y: 0, z: 0}
   spellId: 1
   damage: 10
 --- !u!50 &8243828734492601466

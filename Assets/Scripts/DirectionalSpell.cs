@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionalSpell : MonoBehaviour
 {
-    public float spellSpeed = 10f;
+    public int spellSpeed = 10;
     public float detonationTime = 10f;
     public float detonationRadius = 5f;
     public int spellId = 1;
@@ -19,11 +19,20 @@ public class DirectionalSpell : MonoBehaviour
         Debug.Log("current time: " + Time.time);
         //calculate the direction to the target
         Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
+        bool xIsNegative = direction.x < 0 ? true : false;
+        bool yIsNegative = direction.y < 0 ? true : false;
+        Debug.Log("algebra x " +(direction.x/(System.Math.Abs(direction.x) + System.Math.Abs(direction.y))));
+        Debug.Log("alegbra y " + (direction.y/(direction.x + direction.y)));
+        Debug.Log("complete algebra " + ((direction.x/(direction.x + direction.y)) + (direction.y/(direction.x + direction.y))));
         //get gameObject rb
         Rigidbody2D spellRigidBody = gameObject.GetComponent<Rigidbody2D>();
         //calculate velocity
-        Vector2 velocity = new Vector2(direction.normalized.x,direction.normalized.y);
+        Vector2 velocity = new Vector2((xIsNegative ? -1 *(System.Math.Abs(direction.x)/(System.Math.Abs(direction.x) + System.Math.Abs(direction.y))) : (System.Math.Abs(direction.x)/(System.Math.Abs(direction.x) + System.Math.Abs(direction.y)))),
+                                        ( yIsNegative? -1 * (System.Math.Abs(direction.y)/(System.Math.Abs(direction.x) + System.Math.Abs(direction.y))) : (System.Math.Abs(direction.y)/(System.Math.Abs(direction.x) + System.Math.Abs(direction.y)))));
         Debug.Log("velocity = " + velocity);
+        Debug.Log("spell speed is : " + spellSpeed);
+        Debug.Log("velocity x multiplyed: " + velocity.x * spellSpeed);
+        Debug.Log("velocity y multiplyed: " + velocity.y * spellSpeed);
         // set velocity - this doe not multiply --- why??? 
         spellRigidBody.velocity = velocity * spellSpeed;
         Debug.Log("directional velocity: " + spellRigidBody.velocity);
