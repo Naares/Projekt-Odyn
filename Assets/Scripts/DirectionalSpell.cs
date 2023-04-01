@@ -52,7 +52,15 @@ public class DirectionalSpell : MonoBehaviour
 
     private void OnDestroy() {
         //search all triggers if those are enemy deal damage to them
-        CircleCollider2D detonation = gameObject.GetComponent<CircleCollider2D>();
-        if(detonation == null) {return;} // do nothing detonation radius is no more
+        //activate the circle
+        Collider2D[] targets = Physics2D.OverlapCircleAll(new Vector2(gameObject.transform.position.x,gameObject.transform.position.y),this.detonationRadius);
+        Debug.Log("colliders lengts: " + targets.Length);
+        foreach(var item in targets){
+            Debug.Log("item is :" + item.gameObject);
+            if(item.gameObject.tag == "Entity-Enemy"){
+                EnetityStats entity = item.gameObject.GetComponent<EnetityStats>();
+                entity.TakeDamage(10);
+            }
+        }
     }
 }
