@@ -6,7 +6,7 @@ public class SpellManager : MonoBehaviour
 {
     //later we will manage spell names and guids wia spellbookmanager wich will interact with player, now just proof of concept
     public string spellName1 = "Fireball";
-    public string spellName2 = "Voidbolt";
+    public string spellName2 = "Strom";
     public string spellName3 = "Holybolt";
     public string spellName4 = "Arcanebolt";
     public string spellName5 = "Arcanebeam";
@@ -20,7 +20,10 @@ public class SpellManager : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonUp("CastSpell1")){
-            Instantiate(Resources.Load("Spells/" + spellName1), gameObject.transform);
+            Instantiate(Resources.Load("Spells/" + spellName1));
+        }
+        if(Input.GetButtonUp("CastSpell2")){
+            Instantiate(Resources.Load("Spells/" + spellName2));
         }
     }
 
