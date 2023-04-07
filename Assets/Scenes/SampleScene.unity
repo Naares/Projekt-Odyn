@@ -770,7 +770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844822342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -808,7 +808,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030099154, y: 0.009029746}
+  m_Offset: {x: 0.0030099154, y: -0.3747724}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -819,7 +819,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99397993, y: 0.99398017}
+  m_Size: {x: 0.99397993, y: 0.22637588}
   m_EdgeRadius: 0
 --- !u!50 &844822346
 Rigidbody2D:
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName1: Fireball
-  spellName2: Voidbolt
+  spellName2: Strom
   spellName3: Holybolt
   spellName4: Arcanebolt
   spellName5: Arcanebeam
@@ -1286,60 +1286,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &2227664367690051147
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2070515
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5746169
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605178990007433240, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138123833715836626, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}
-      propertyPath: m_Name
-      value: Strom
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1b4d4e4049c7bf04a99580b8991e4314, type: 3}

@@ -14,15 +14,18 @@ public class DirectionalSpell : MonoBehaviour
     private float lenghtOfAudio = 0f;
 
     private AudioSource finisher = null;
+    private GameObject player = null;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         finisher = gameObject.GetComponent<AudioSource>();
         timeOfInstantination = Time.time;
         detonationTime += Time.time;
         lenghtOfAudio = detonationTime - finisher.clip.length ;
+        gameObject.transform.position = player.transform.position;
         //calculate the direction to the target
-        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
+        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position;
         bool xIsNegative = direction.x < 0 ? true : false;
         bool yIsNegative = direction.y < 0 ? true : false;
         Rigidbody2D spellRigidBody = gameObject.GetComponent<Rigidbody2D>();
