@@ -19,7 +19,6 @@ public class EnemyEntityAI : MonoBehaviour
     {
         Collider2D[] currentCollisions = Physics2D.OverlapCircleAll(new Vector2(gameObject.transform.position.x,gameObject.transform.position.y),detectionRadius.GetComponent<CircleCollider2D>().radius);
         foreach(var item in currentCollisions){
-            Debug.Log("item : " + item);
             if(item.gameObject == player){
                 Debug.Log("player is in detection radius");
             }
