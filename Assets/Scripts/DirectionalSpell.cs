@@ -66,4 +66,9 @@ public class DirectionalSpell : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collidingObject) {
+        Debug.Log("Collision with another object");
+        Destroy(gameObject);        
+    }
 }

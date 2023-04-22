@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Camera currentCamera;
     //Default value for camera distance is 10m
+    public FacingDirection playerFacingDirection = FacingDirection.Right;
     private float cameraDistance = -10;
     
     public float characterSpeed = 10;
@@ -36,6 +37,24 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        //If both horizontal and vertical are 0 do nothing so that the player state is saved in this value
+        if(horizontal == 1 && vertical == 0){
+            playerFacingDirection = FacingDirection.Up;
+        }else if(horizontal == -1 && vertical == 0){
+            playerFacingDirection = FacingDirection.Down;
+        }else if(horizontal == 0 && vertical == 1){
+            playerFacingDirection = FacingDirection.Right;
+        }else if(horizontal == 0 && vertical == -1){
+            playerFacingDirection = FacingDirection.Left;
+        }else if(horizontal == 1 && vertical == 1){
+            playerFacingDirection = FacingDirection.UpRight;
+        }else if(horizontal == -1 && vertical == 1){
+            playerFacingDirection = FacingDirection.UpLeft;
+        }else if(horizontal == 1 && vertical == -1){
+            playerFacingDirection = FacingDirection.DownRight;
+        }else if(horizontal == -1 && vertical == -1){
+            playerFacingDirection = FacingDirection.DownLeft;
+        }
     }
 
     void FixedUpdate() {
@@ -75,4 +94,15 @@ public class PlayerController : MonoBehaviour
             playerRigidBody.velocity = new Vector2(horizontal * characterSpeed * dashSpeed, playerRigidBody.velocity.y);
         }
     }
+}
+
+public enum FacingDirection{
+    Right,
+    Left,
+    Down,
+    Up,
+    UpRight,
+    UpLeft,
+    DownRight,
+    DownLeft
 }
