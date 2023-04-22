@@ -20,8 +20,13 @@ public class PointSpellAnimationController : MonoBehaviour
         for(int i = 0 ; i < ammtOfAnims - 1; i++){
             GameObject singleStorm = Instantiate<GameObject>(empty,gameObject.transform);
             singleStorm.transform.position = new Vector3(gameObject.transform.position.x + Random.Range(range.radius * - 1,range.radius),gameObject.transform.position.y + Random.Range(range.radius * - 1 , range.radius),0);
+            SpriteRenderer render = singleStorm.GetComponent<SpriteRenderer>();
+            render.sortingOrder = 2;
             Debug.Log("single strom position = " + singleStorm.transform.position);
         }
+        GameObject clouds = gameObject.transform.GetChild(0).gameObject;
+        clouds.transform.localScale = new Vector3(clouds.transform.localScale.x + range.radius , clouds.transform.localScale.y + range.radius, clouds.transform.localScale.z);
+        clouds.transform.position = new Vector3(clouds.transform.position.x,clouds.transform.position.y + (range.radius / 2),clouds.transform.position.z);
 
     }
 
